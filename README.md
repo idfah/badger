@@ -1,6 +1,6 @@
 # Project Badger
 
-## An optimized matrix library that can use Intel CPUs or nVidia GPUs
+## An experimental matrix library for optimized CPU and GPU computations.
 
 ### by Elliott Forney, 2010
 
