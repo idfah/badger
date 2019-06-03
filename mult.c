@@ -97,7 +97,7 @@ int main(int narg, char **arg)
   matrix_load_testc(c);
   matrix_load_runif(c, 0, 1);
 
-  // figure a with ATLAS
+  // figure a with BLAS
   cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
               b.r, c.c, b.c, 1.0f,
               b.cpu_data, b.cstride, c.cpu_data, c.cstride,

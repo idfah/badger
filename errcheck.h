@@ -34,7 +34,7 @@
                             }
 
     // check cudaerr, exit if non-zero
-    #define errcheck_gpu()  cudaThreadSynchronize(); cuda_errno = cudaGetLastError(); \
+    #define errcheck_gpu()  cudaDeviceSynchronize(); cuda_errno = cudaGetLastError(); \
                             if (cuda_errno != cudaSuccess) { \
                               fprintf(stderr, __FILE__ " %d: %s\n", __LINE__, cudaGetErrorString(cuda_errno)); \
                               exit(GPU_ERROR); \

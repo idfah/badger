@@ -1157,7 +1157,7 @@ void matrix_sync_to_gpu(matrix m)
 // wait for any gpu kernels to finish
 void matrix_wait()
 {
-  cudaThreadSynchronize();
+  cudaDeviceSynchronize();
   errcheck_gpu();
 }
 

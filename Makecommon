@@ -2,15 +2,12 @@ MAKE  := make
 SHELL := /bin/bash
 #-arch compute_13 -code compute_13 #--ptxas-options -v
 NVCC := nvcc
-NVCFLAGS := -Xcompiler -fno-inline -Xcompiler -O3 -Xcompiler -fopenmp -Xcompiler -march=native
+NVCFLAGS := -Xcompiler -fno-inline -Xcompiler -O3 -Xcompiler -fopenmp -Xcompiler -march=native -ccbin /usr/local/gcc-8.3.0/bin/gcc
 
-CC := gcc
-CFLAGS   := -msse4.1 -fopenmp -march=native -Wall -O3 # -fno-tree-vectorize # -g # -std=c99
+CC := /usr/local/gcc-8.3.0/bin/gcc
+CFLAGS   := -fopenmp -march=native -Wall -O3 # -fno-tree-vectorize # -g # -std=c99
 CPPFLAGS := -I/usr/local/cuda/include -DNO_ERRCHECK # -D_POSIX_C_SOURCE=200112L 
 LDFLAGS  := -lm -lrt -lgomp -L/usr/local/cuda/lib64 -lcudart
 
-MKL_CPPFLAGS := -I/s/parsons/l/sys/intel/mkl/include
-MKL_LDFLAGS  := -L/s/parsons/l/sys/intel/mkl/lib/intel64 -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core 
-
-ATL_CPPFLAGS := -I/usr/local/atlas/include
-ATL_LDFLAGS  := -L/usr/local/atlas/lib -latlas -lptcblas
+MKL_CPPFLAGS := -I/usr/local/intel/mkl/lib/intel64
+MKL_LDFLAGS  := -L/usr/local/intel/mkl/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core 

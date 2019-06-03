@@ -250,14 +250,14 @@ int main(int narg, char **arg)
   full_kern<<<grid_size, block_size>>>(d_result, n, n,
                                        d_m1, n, n,
                                        d_m2, n, n);
-  cudaThreadSynchronize();
+  cudaDeviceSynchronize();
 
   // gold run
   benchmark_start_timer(&bm);
   full_kern<<<grid_size, block_size>>>(d_result, n, n,
                                        d_m1, n, n,
                                        d_m2, n, n);
-  cudaThreadSynchronize();
+  cudaDeviceSynchronize();
   benchmark_stop_timer(&bm);
 
   cudaMemcpy(result, d_result, size, cudaMemcpyDeviceToHost);
